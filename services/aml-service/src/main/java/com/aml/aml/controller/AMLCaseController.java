@@ -3,6 +3,7 @@ package com.aml.aml.controller;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.aml.aml.entity.AMLCase;
 import com.aml.aml.repository.AMLCaseRepository;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/cases")
 public class AMLCaseController {
@@ -34,16 +36,19 @@ public class AMLCaseController {
 
     @GetMapping
     public List<AMLCase> getAllCases() {
+
         return caseRepository.findAll();
     }
 
     @GetMapping("/open")
     public List<AMLCase> getOpenCases() {
+
         return caseRepository.findByStatus("OPEN");
     }
 
     @GetMapping("/{id}")
     public AMLCase getCase(@PathVariable Long id) {
+
         return caseRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Case not found"));
     }

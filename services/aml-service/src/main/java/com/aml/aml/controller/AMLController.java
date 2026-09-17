@@ -2,6 +2,7 @@ package com.aml.aml.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,6 +16,7 @@ import com.aml.aml.entity.Alert;
 import com.aml.aml.repository.AlertRepository;
 import com.aml.aml.service.AMLService;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/aml")
 public class AMLController {
@@ -22,8 +24,10 @@ public class AMLController {
     private final AMLService amlService;
     private final AlertRepository alertRepository;
 
-    public AMLController(AMLService amlService,
-                         AlertRepository alertRepository) {
+    public AMLController(
+            AMLService amlService,
+            AlertRepository alertRepository) {
+
         this.amlService = amlService;
         this.alertRepository = alertRepository;
     }
@@ -37,16 +41,19 @@ public class AMLController {
 
     @GetMapping("/alerts")
     public List<Alert> getAllAlerts() {
+
         return alertRepository.findAll();
     }
 
     @GetMapping("/alerts/high")
     public List<Alert> getHighRiskAlerts() {
+
         return alertRepository.findByRiskLevel("HIGH");
     }
 
     @GetMapping("/alerts/open")
     public List<Alert> getOpenAlerts() {
+
         return alertRepository.findByStatus("OPEN");
     }
 
