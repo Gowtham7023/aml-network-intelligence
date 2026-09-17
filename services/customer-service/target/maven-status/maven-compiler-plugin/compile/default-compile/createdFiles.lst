@@ -1,9 +1,0 @@
-com\aml\customer\service\AccountService.class
-com\aml\customer\service\CustomerService.class
-com\aml\customer\controller\AccountController.class
-com\aml\customer\entity\Account.class
-com\aml\customer\entity\Customer.class
-com\aml\customer\CustomerServiceApplication.class
-com\aml\customer\repository\AccountRepository.class
-com\aml\customer\repository\CustomerRepository.class
-com\aml\customer\controller\CustomerController.class
