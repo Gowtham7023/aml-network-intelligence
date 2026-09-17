@@ -1,6 +1,7 @@
 package com.aml.aml.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,4 +14,6 @@ public interface AMLCaseRepository extends JpaRepository<AMLCase, Long> {
     List<AMLCase> findByPriority(String priority);
 
     List<AMLCase> findByAccountId(String accountId);
+
+    Optional<AMLCase> findByAlertId(Long alertId);
 }
